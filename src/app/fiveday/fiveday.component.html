@@ -1,0 +1,49 @@
+ 
+<br>
+
+<div class="container">
+  <div class = "row">
+    <div class ="col-sm-4">
+        <input type="text" class="form-control" id="usr" [(ngModel)]="city">
+    </div>
+    <div class ="col-sm-2">   
+       <button type="button" class="btn btn-default" (click) = "getLocation()">
+        <span class="glyphicon glyphicon-search"></span> Search City
+      </button>          
+    </div>
+    <div class ="col-sm-2 ">   
+      <button type="button" class="btn btn-default" (click)= "getCurrent()" >
+        <span class="glyphicon glyphicon-map-marker"></span> Current Location
+      </button>    
+  </div>
+</div>
+
+<div *ngIf = "getByCity">
+    <div *ngFor = "let i of res">
+          <h4>
+              {{i.main.temp}}{{'°f'}} 
+              <img src="http://openweathermap.org/img/w/{{i.weather[0].icon}}.png">
+              {{i.dt_txt| date : 'full'}}
+          </h4>      
+    </div>       
+</div>
+
+<div *ngIf = "getByLocation">
+    <div *ngFor = "let i of res2">
+          <h4>
+            <img src="http://openweathermap.org/img/w/{{i.weather[0].icon}}.png">
+            {{i.main.temp}}{{'°f'}}
+              {{i.dt_txt| date : 'full'}}
+          </h4>      
+    </div>       
+</div>
+<br>
+<div *ngIf = err class= "container">{{msg}}</div>
+
+</div>  
+
+
+
+
+
+
